@@ -1,17 +1,21 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { Article } from "@/services/articleService";
+import ArticleCard from "@/app/components/ArticleCard";
 
 interface ArticlesListProps {
   articles: Article[];
+  initialSelectedTags?: string[];
 }
 
-export default function ArticlesList({ articles }: ArticlesListProps) {
+export default function ArticlesList({
+  articles,
+  initialSelectedTags = [],
+}: ArticlesListProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] =
+    useState<string[]>(initialSelectedTags);
 
   // Get all unique tags from articles
   const allTags = useMemo(() => {
@@ -25,12 +29,13 @@ export default function ArticlesList({ articles }: ArticlesListProps) {
   // Filter articles based on search and tags
   const filteredArticles = useMemo(() => {
     return articles.filter((article) => {
-      // Search filter
+      // Search filter - only search title and tags
+      const searchLower = searchQuery.toLowerCase();
       const matchesSearch =
         searchQuery === "" ||
-        article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.content.toLowerCase().includes(searchQuery.toLowerCase());
+        article.title.toLowerCase().includes(searchLower) ||
+        article.tags?.some((tag) => tag.toLowerCase().includes(searchLower)) ||
+        false;
 
       // Tag filter
       const matchesTags =
@@ -92,61 +97,16 @@ export default function ArticlesList({ articles }: ArticlesListProps) {
         )}
 
         {/* Results count */}
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 text-right">
           Showing {filteredArticles.length} of {articles.length} articles
         </p>
       </div>
 
       {/* Articles List */}
       {filteredArticles.length > 0 ? (
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredArticles.map((article) => (
-            <article
-              key={article.slug}
-              className="border-b border-gray-200 pb-8 last:border-b-0"
-            >
-              <Link href={`/articles/${article.slug}`} className="block group">
-                <div className="flex gap-6">
-                  {article.thumbnail && (
-                    <div className="flex-shrink-0 w-48 h-32 relative rounded-lg overflow-hidden">
-                      <Image
-                        src={article.thumbnail}
-                        alt={article.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-semibold mb-2 text-gray-900 transition-colors group-hover:text-[#002855]">
-                      {article.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 mb-3">
-                      {new Date(article.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
-                    {article.tags && article.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {article.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    <p className="text-gray-700 leading-relaxed">
-                      {article.excerpt}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </article>
+            <ArticleCard key={article.slug} article={article} />
           ))}
         </div>
       ) : (

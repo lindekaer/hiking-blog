@@ -9,6 +9,7 @@ import {
 } from "@/services/articleService";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import ShareButton from "@/app/components/ShareButton";
+import TagCloud from "@/app/components/TagCloud";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -43,7 +44,7 @@ export default async function ArticlePage({ params }: PageProps) {
           <div className="lg:col-span-2">
             <article>
               {article.thumbnail ? (
-                <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden mb-8">
+                <div className="w-full aspect-[4/3] relative rounded-lg overflow-hidden mb-4">
                   <Image
                     src={article.thumbnail}
                     alt={article.title}
@@ -104,7 +105,7 @@ export default async function ArticlePage({ params }: PageProps) {
               ) : null}
               {/* Tags and Share button row below image */}
               {article.thumbnail && article.tags && article.tags.length > 0 && (
-                <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
+                <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
                   <div className="flex flex-wrap gap-2 items-center">
                     {article.tags.map((tag) => (
                       <span
@@ -174,7 +175,7 @@ export default async function ArticlePage({ params }: PageProps) {
                     <ShareButton slug={slug} />
                   </div>
                 )}
-              <div className="prose prose-lg max-w-none mt-8">
+              <div className="prose prose-base max-w-none mt-8">
                 <ReactMarkdown>{article.content}</ReactMarkdown>
               </div>
             </article>
@@ -185,10 +186,10 @@ export default async function ArticlePage({ params }: PageProps) {
             <div className="space-y-12">
               {/* Featured Articles */}
               <div className="border border-gray-200 rounded-lg p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
+                <h2 className="text-xl font-bold text-gray-900 mb-5 uppercase tracking-widest text-center">
                   Featured
                 </h2>
-                <ul className="space-y-6">
+                <ul className="space-y-8">
                   {featuredArticles
                     .filter((featured) => featured.slug !== slug)
                     .slice(0, 6)
@@ -204,7 +205,7 @@ export default async function ArticlePage({ params }: PageProps) {
                                 src={featured.thumbnail}
                                 alt={featured.title}
                                 fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                className="object-cover"
                               />
                             </div>
                           )}
@@ -220,8 +221,19 @@ export default async function ArticlePage({ params }: PageProps) {
                 </ul>
               </div>
 
+              {/* Tag Cloud */}
+              <div className="border border-gray-200 rounded-lg p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-5 uppercase tracking-widest text-center">
+                  Tags
+                </h2>
+                <TagCloud />
+              </div>
+
               {/* Ko-fi Widget */}
-              <div className="mt-8">
+              <div className="border border-gray-200 rounded-lg p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-5 uppercase tracking-widest text-center">
+                  Support
+                </h2>
                 <iframe
                   id="kofiframe"
                   src="https://ko-fi.com/lindekaer/?hidefeed=true&widget=true&embed=true&preview=true"

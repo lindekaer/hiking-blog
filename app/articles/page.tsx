@@ -2,8 +2,14 @@ import { getAllArticles } from "@/services/articleService";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import ArticlesList from "./ArticlesList";
 
-export default function ArticlesPage() {
+interface PageProps {
+  searchParams: Promise<{ tag?: string }>;
+}
+
+export default async function ArticlesPage({ searchParams }: PageProps) {
   const articles = getAllArticles();
+  const { tag } = await searchParams;
+  const initialSelectedTags = tag ? [tag] : [];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -12,7 +18,7 @@ export default function ArticlesPage() {
         <h1 className="text-4xl font-bold mb-8 text-gray-900">
           Browse everything I've written
         </h1>
-        <ArticlesList articles={articles} />
+        <ArticlesList articles={articles} initialSelectedTags={initialSelectedTags} />
       </main>
     </div>
   );

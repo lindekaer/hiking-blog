@@ -38,7 +38,7 @@ export default function GalleryWidget() {
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
+                className="object-cover"
               />
             </div>
           ))}

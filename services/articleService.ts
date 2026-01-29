@@ -76,3 +76,21 @@ export function getFeaturedArticles(limit: number = 6): Article[] {
   const allArticles = getAllArticles();
   return allArticles.filter((article) => article.featured).slice(0, limit);
 }
+
+export interface TagWithCount {
+  tag: string;
+  count: number;
+}
+
+export function getTagCloud(): TagWithCount[] {
+  const allArticles = getAllArticles();
+  const tagCounts = new Map<string, number>();
+  allArticles.forEach((article) => {
+    article.tags?.forEach((tag) => {
+      tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+    });
+  });
+  return Array.from(tagCounts.entries())
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count);
+}

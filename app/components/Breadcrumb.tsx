@@ -40,11 +40,14 @@ export default function Breadcrumb({ articleTitle }: BreadcrumbProps) {
 
   return (
     <nav className="mb-6" aria-label="Breadcrumb">
-      <ol className="flex items-center space-x-2 text-sm">
+      <ol className="flex items-center gap-2 text-sm flex-wrap">
         {crumbs.map((crumb, index) => (
-          <li key={crumb.href} className="flex items-center">
+          <li
+            key={`${crumb.href}-${index}`}
+            className="flex items-center gap-2"
+          >
             {index > 0 && (
-              <span className="mx-2 text-gray-400" aria-hidden="true">
+              <span className="text-gray-400 shrink-0" aria-hidden="true">
                 &gt;
               </span>
             )}
