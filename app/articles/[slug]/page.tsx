@@ -7,7 +7,9 @@ import {
   getArticleBySlug,
   getFeaturedArticles,
 } from "@/services/articleService";
+import { jsonLdService } from "@/services/jsonLdService";
 import Breadcrumb from "@/app/components/Breadcrumb";
+import JsonLd from "@/app/components/JsonLd";
 import ShareButton from "@/app/components/ShareButton";
 import TagCloud from "@/app/components/TagCloud";
 
@@ -33,9 +35,11 @@ export default async function ArticlePage({ params }: PageProps) {
   }
 
   const featuredArticles = getFeaturedArticles(7);
+  const jsonLd = jsonLdService.getArticlePageJsonLd(article);
 
   return (
     <div className="min-h-screen flex flex-col">
+      <JsonLd data={jsonLd} />
       <main className="flex-1 max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         <Breadcrumb articleTitle={article.title} />
 
@@ -58,7 +62,7 @@ export default async function ArticlePage({ params }: PageProps) {
                     className="absolute inset-0"
                     style={{
                       background:
-                        "linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, transparent 100%)",
+                        "linear-gradient(to top, black 0%, transparent 100%)",
                     }}
                   />
                   {/* Title and author on top of image */}

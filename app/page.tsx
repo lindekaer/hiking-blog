@@ -1,11 +1,15 @@
 import { getAllArticles } from "@/services/articleService";
+import { jsonLdService } from "@/services/jsonLdService";
 import ArticleCard from "@/app/components/ArticleCard";
+import JsonLd from "@/app/components/JsonLd";
 
 export default function Home() {
   const articles = getAllArticles().slice(0, 4);
+  const jsonLd = jsonLdService.getHomePageJsonLd();
 
   return (
     <div className="min-h-screen flex flex-col">
+      <JsonLd data={jsonLd} />
       {/* Banner Image */}
       <div
         className="relative w-full h-64 md:h-96"
