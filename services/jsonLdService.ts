@@ -10,6 +10,7 @@ import type {
   WithContext,
 } from "schema-dts";
 import { site, pages, SITE_URL } from "@/config/site";
+import { getAuthorAvatar } from "@/utils/author";
 import type { Article } from "./articleService";
 
 type Graph =
@@ -242,12 +243,12 @@ class JsonLdService {
     });
     const articleSchema = this.generateArticleFragment({
       title: article.title,
-      author: article.author?.name ?? site.name,
+      author: article.author ?? site.name,
       date: article.date,
       image: article.thumbnail,
       content: article.content,
       excerpt: article.excerpt,
-      authorImage: article.author?.avatar,
+      authorImage: article.author ? getAuthorAvatar(article.author) : undefined,
       publisher: organization,
       keywords: article.tags?.join(", "),
     });

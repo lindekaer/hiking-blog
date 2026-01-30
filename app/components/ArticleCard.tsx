@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Article } from "@/services/articleService";
+import { getAuthorAvatar } from "@/utils/author";
 
 interface ArticleCardProps {
   article: Article;
@@ -34,24 +35,16 @@ export default function ArticleCard({ article }: ArticleCardProps) {
               <div className="flex items-center gap-3 flex-wrap">
                 {article.author && (
                   <div className="flex items-center gap-2">
-                    {article.author.avatar ? (
-                      <div className="w-8 h-8 relative rounded-full overflow-hidden ring-2 ring-white/50 shrink-0">
-                        <Image
-                          src={article.author.avatar}
-                          alt={article.author.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center ring-2 ring-white/50 shrink-0">
-                        <span className="text-white text-xs font-medium">
-                          {article.author.name.charAt(0).toUpperCase()}
-                        </span>
-                      </div>
-                    )}
+                    <div className="w-8 h-8 relative rounded-full overflow-hidden ring-2 ring-white/50 shrink-0">
+                      <Image
+                        src={getAuthorAvatar(article.author)}
+                        alt={article.author}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                     <span className="text-sm text-white font-medium">
-                      {article.author.name}
+                      {article.author}
                     </span>
                   </div>
                 )}

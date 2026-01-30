@@ -11,10 +11,7 @@ export interface Article {
   featured?: boolean;
   thumbnail?: string;
   tags?: string[];
-  author?: {
-    name: string;
-    avatar?: string;
-  };
+  author?: string;
 }
 
 const articlesDirectory = path.join(process.cwd(), "articles");
@@ -56,12 +53,12 @@ export function getArticleBySlug(slug: string): Article {
     featured: data.featured || false,
     thumbnail: data.thumbnail,
     tags: data.tags || [],
-    author: data.author
-      ? {
-          name: data.author.name,
-          avatar: data.author.avatar,
-        }
-      : undefined,
+    author:
+      typeof data.author === "string"
+        ? data.author
+        : data.author?.name
+          ? data.author.name
+          : undefined,
   };
 }
 

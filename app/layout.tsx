@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import GalleryWidget from "./components/GalleryWidget";
-import NewsletterWidget from "./components/NewsletterWidget";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -28,7 +27,6 @@ export default function RootLayout({
         <Header />
         {children}
         <GalleryWidget />
-        <NewsletterWidget />
         <Footer />
       </body>
     </html>

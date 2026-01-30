@@ -1,18 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getGalleryImages } from "@/services/galleryService";
+
+const PREVIEW_COUNT = 8;
 
 export default function GalleryWidget() {
-  // Show a preview of 8 images from the gallery
-  const galleryImages = [
-    { id: 1, src: "/image-1.jpg", alt: "Mountain peak" },
-    { id: 2, src: "/image-2.jpg", alt: "Coastal trail" },
-    { id: 3, src: "/image-3.jpg", alt: "Forest path" },
-    { id: 4, src: "/image-4.jpg", alt: "Desert landscape" },
-    { id: 5, src: "/image-5.jpg", alt: "Glacial lake" },
-    { id: 6, src: "/image-6.jpg", alt: "Tropical islands" },
-    { id: 7, src: "/image-7.jpg", alt: "Ancient ruins" },
-    { id: 8, src: "/image-8.jpg", alt: "Wildlife" },
-  ];
+  const allImages = getGalleryImages();
+  const galleryImages = allImages.slice(0, PREVIEW_COUNT);
 
   return (
     <div className="w-full bg-gray-50 py-12">
@@ -31,7 +25,7 @@ export default function GalleryWidget() {
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
           {galleryImages.map((image) => (
             <div
-              key={image.id}
+              key={image.src}
               className="relative aspect-square rounded-lg overflow-hidden"
             >
               <Image

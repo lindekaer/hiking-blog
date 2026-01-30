@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -7,6 +8,7 @@ import {
   getArticleBySlug,
   getFeaturedArticles,
 } from "@/services/articleService";
+import { getAuthorAvatar } from "@/utils/author";
 import { jsonLdService } from "@/services/jsonLdService";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import JsonLd from "@/app/components/JsonLd";
@@ -74,24 +76,16 @@ export default async function ArticlePage({ params }: PageProps) {
                       <div className="flex items-center gap-4 flex-wrap">
                         {article.author && (
                           <div className="flex items-center gap-3">
-                            {article.author.avatar ? (
-                              <div className="w-10 h-10 relative rounded-full overflow-hidden ring-2 ring-white/50">
-                                <Image
-                                  src={article.author.avatar}
-                                  alt={article.author.name}
-                                  fill
-                                  className="object-cover"
-                                />
-                              </div>
-                            ) : (
-                              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center ring-2 ring-white/50">
-                                <span className="text-white text-sm font-medium">
-                                  {article.author.name.charAt(0).toUpperCase()}
-                                </span>
-                              </div>
-                            )}
+                            <div className="w-10 h-10 relative rounded-full overflow-hidden ring-2 ring-white/50">
+                              <Image
+                                src={getAuthorAvatar(article.author)}
+                                alt={article.author}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
                             <span className="text-sm text-white font-medium">
-                              {article.author.name}
+                              {article.author}
                             </span>
                           </div>
                         )}
@@ -131,24 +125,16 @@ export default async function ArticlePage({ params }: PageProps) {
                   <div className="flex items-center gap-4 mb-4">
                     {article.author && (
                       <div className="flex items-center gap-3">
-                        {article.author.avatar ? (
-                          <div className="w-10 h-10 relative rounded-full overflow-hidden">
-                            <Image
-                              src={article.author.avatar}
-                              alt={article.author.name}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
-                            <span className="text-gray-600 text-sm font-medium">
-                              {article.author.name.charAt(0).toUpperCase()}
-                            </span>
-                          </div>
-                        )}
+                        <div className="w-10 h-10 relative rounded-full overflow-hidden">
+                          <Image
+                            src={getAuthorAvatar(article.author)}
+                            alt={article.author}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
                         <span className="text-sm text-gray-700 font-medium">
-                          {article.author.name}
+                          {article.author}
                         </span>
                       </div>
                     )}
@@ -180,7 +166,12 @@ export default async function ArticlePage({ params }: PageProps) {
                   </div>
                 )}
               <div className="prose prose-base max-w-none mt-8">
-                <ReactMarkdown>{article.content}</ReactMarkdown>
+                <ReactMarkdown
+                  rehypePlugins={[rehypeRaw]}
+                  remarkRehypeOptions={{ allowDangerousHtml: true }}
+                >
+                  {article.content}
+                </ReactMarkdown>
               </div>
             </article>
           </div>
