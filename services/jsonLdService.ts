@@ -191,7 +191,7 @@ class JsonLdService {
     const webPage = this.generateWebPageFragment({
       pageUri: pages.About.path,
       pageDescription:
-        "About Ultralight Life – hiking adventures and outdoor exploration.",
+        "About Lindekaer - hiking adventures and outdoor exploration.",
       webSite,
       pageName: pages.About.name,
     });

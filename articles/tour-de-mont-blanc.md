@@ -1,7 +1,7 @@
 ---
 title: "Tour du Mont Blanc"
 date: "2016-07-20"
-excerpt: "Eleven days around the Mont Blanc massif—170 kilometers through France, Italy and Switzerland, with rest days in Courmayeur and Champex-Lac."
+excerpt: "Eleven days around the Mont Blanc massif-170 kilometers through France, Italy and Switzerland, with rest days in Courmayeur and Champex-Lac."
 featured: true
 thumbnail: "/article/tour-de-mont-blanc.team.jpg"
 tags: ["TMB", "Alps", "Long-distance", "Mont Blanc"]

@@ -12,7 +12,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Ultralight Life",
+  title: "Lindekaer",
   description: "A blog about hiking adventures and outdoor exploration",
 };
 

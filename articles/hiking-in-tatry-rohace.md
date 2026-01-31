@@ -1,7 +1,7 @@
 ---
 title: "Hiking in Tatry Roháče"
 date: "2016-08-22"
-excerpt: "A week in the Western Tatras near Zuberec—peak bagging, mountain lakes, thermal springs in Oravice, and the raw beauty of the Slovak highlands."
+excerpt: "A week in the Western Tatras near Zuberec-peak bagging, mountain lakes, thermal springs in Oravice, and the raw beauty of the Slovak highlands."
 featured: true
 thumbnail: "/article/hiking-in-tatry-rohace.high-tatras.jpg"
 tags: ["Slovakia", "Tatras", "Mountains", "Zuberec"]

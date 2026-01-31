@@ -14,25 +14,18 @@ export default function AboutPage() {
 
         <div className="prose prose-lg max-w-none">
           <p className="text-lg text-gray-700 mb-6">
-            Welcome to Ultralight Life, a place where we share our passion for
-            hiking, outdoor adventures, and exploring the natural world.
+            This is my personal blog. I’m passionate about hiking - especially
+            ultralight - and I love the outdoors.
           </p>
 
           <p className="text-gray-700 mb-6">
-            Our mission is to inspire others to get outside, explore new trails,
-            and connect with nature. Whether you're a seasoned hiker or just
-            starting out, we hope our stories and experiences will encourage you
-            to embark on your own adventures.
-          </p>
-
-          <p className="text-gray-700 mb-6">
-            From mountain peaks to coastal trails, from dense forests to desert
-            landscapes, we document our journeys and share the beauty we
-            discover along the way.
+            I’m thankful to have shared many trails and trips with people I care
+            about. Those experiences are what this site is about.
           </p>
 
           <p className="text-gray-700">
-            Join us as we explore the great outdoors, one trail at a time.
+            I hope the stories and photos here inspire you to travel more and
+            get outside, whether that’s a long trail or a short walk.
           </p>
         </div>
       </main>

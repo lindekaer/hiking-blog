@@ -7,13 +7,15 @@ import ArticleCard from "@/app/components/ArticleCard";
 interface ArticlesListProps {
   articles: Article[];
   initialSelectedTags?: string[];
+  initialSearchQuery?: string;
 }
 
 export default function ArticlesList({
   articles,
   initialSelectedTags = [],
+  initialSearchQuery = "",
 }: ArticlesListProps) {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [selectedTags, setSelectedTags] =
     useState<string[]>(initialSelectedTags);
 

@@ -6,7 +6,7 @@ export const SITE_URL =
     : DEFAULT_BASE_URL;
 
 export const site = {
-  name: "Ultralight Life",
+  name: "Lindekaer",
   description: "A blog about hiking adventures and outdoor exploration",
   url: SITE_URL,
   logo: `${SITE_URL}/favicon.ico`,

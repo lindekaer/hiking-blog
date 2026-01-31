@@ -1,7 +1,7 @@
 ---
 title: "Upplandsleden"
 date: "2016-04-15"
-excerpt: "Three days on Upplandsleden from Gimo toward Uppsala—shelters, orange markings, and a surprise morning snow in the Swedish spring."
+excerpt: "Three days on Upplandsleden from Gimo toward Uppsala-shelters, orange markings, and a surprise morning snow in the Swedish spring."
 featured: false
 thumbnail: "/article/upplandsleden.city.jpg"
 tags: ["Sweden", "Upplandsleden", "Trail", "Uppsala"]

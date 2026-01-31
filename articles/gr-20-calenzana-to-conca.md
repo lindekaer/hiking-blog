@@ -1,7 +1,7 @@
 ---
 title: "GR 20: Calenzana to Conca"
 date: "2016-06-28"
-excerpt: "Europe's toughest long-distance hike: 180 kilometers across Corsica, from Calenzana to Conca—double stages, refuges, and raw mountain beauty."
+excerpt: "Europe's toughest long-distance hike: 180 kilometers across Corsica, from Calenzana to Conca-double stages, refuges, and raw mountain beauty."
 featured: true
 thumbnail: "/article/gr-20-calenzana-to-conca.bocca-innuminata.jpg"
 tags: ["GR20", "Corsica", "Alpine", "Long-distance"]

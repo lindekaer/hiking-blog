@@ -1,7 +1,7 @@
 ---
 title: "Čez Jizerská 50"
 date: "2016-02-14"
-excerpt: "Fifty kilometers of classic cross-country skiing in the Czech Republic—race day, borrowed skis, and unforgettable hospitality in Bedrichov."
+excerpt: "Fifty kilometers of classic cross-country skiing in the Czech Republic-race day, borrowed skis, and unforgettable hospitality in Bedrichov."
 featured: false
 thumbnail: "/article/cez-jizerska.group.jpg"
 tags: ["Skiing", "Czech Republic", "Cross-country", "Race"]

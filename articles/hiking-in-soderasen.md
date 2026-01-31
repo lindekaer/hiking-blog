@@ -1,7 +1,7 @@
 ---
 title: "Hiking in Söderåsen"
 date: "2016-03-20"
-excerpt: "A weekend in Europe's largest natural forest—marked trails, cabins at Liagården, and the 1000 km Skåneleden passing through Sweden's Söderåsen National Park."
+excerpt: "A weekend in Europe's largest natural forest-marked trails, cabins at Liagården, and the 1000 km Skåneleden passing through Sweden's Söderåsen National Park."
 featured: false
 thumbnail: "/article/hiking-in-soderasen.sun.jpg"
 tags: ["Sweden", "Forest", "Söderåsen", "Skåneleden"]

@@ -1,7 +1,7 @@
 ---
 title: "GR 6: Barcelona to Montserrat"
 date: "2015-05-16"
-excerpt: "A two-day weekend hike on Spain's GR 6 from the outskirts of Barcelona to the Santa Maria de Montserrat monastery—55 kilometers of dust, views, and Clara."
+excerpt: "A two-day weekend hike on Spain's GR 6 from the outskirts of Barcelona to the Santa Maria de Montserrat monastery - 55 kilometers of dust, views, and Clara."
 featured: false
 thumbnail: "/article/gr-6-barcelona-to-montserrat.from-above.jpg"
 tags: ["GR6", "Spain", "Montserrat", "Weekend hike"]

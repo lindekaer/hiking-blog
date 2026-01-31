@@ -5,13 +5,14 @@ import JsonLd from "@/app/components/JsonLd";
 import ArticlesList from "./ArticlesList";
 
 interface PageProps {
-  searchParams: Promise<{ tag?: string }>;
+  searchParams: Promise<{ tag?: string; query?: string }>;
 }
 
 export default async function ArticlesPage({ searchParams }: PageProps) {
   const articles = getAllArticles();
-  const { tag } = await searchParams;
+  const { tag, query } = await searchParams;
   const initialSelectedTags = tag ? [tag] : [];
+  const initialSearchQuery = query ?? "";
   const jsonLd = jsonLdService.getArticlesPageJsonLd(articles.length);
 
   return (
@@ -25,6 +26,7 @@ export default async function ArticlesPage({ searchParams }: PageProps) {
         <ArticlesList
           articles={articles}
           initialSelectedTags={initialSelectedTags}
+          initialSearchQuery={initialSearchQuery}
         />
       </main>
     </div>

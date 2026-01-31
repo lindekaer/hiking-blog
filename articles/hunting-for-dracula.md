@@ -1,7 +1,7 @@
 ---
 title: "Hunting for Dracula"
 date: "2016-05-08"
-excerpt: "A week based in Brașov: Bran Castle, Libearty Bear Sanctuary, Sigișhoara, Peleș Castle, and Parc Aventura—Romania beyond the vampire myth."
+excerpt: "A week based in Brașov: Bran Castle, Libearty Bear Sanctuary, Sigișhoara, Peleș Castle, and Parc Aventura-Romania beyond the vampire myth."
 featured: true
 thumbnail: "/article/hunting-for-dracula.pork.jpg"
 tags: ["Romania", "Dracula", "Castles", "Brașov", "Bears"]
