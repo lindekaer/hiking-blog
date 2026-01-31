@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getAllArticles } from "@/services/articleService";
+import bannerImg from "@/public/banner.jpg";
 import { countries, countryCodeToFlag } from "@/config/countries";
 import { jsonLdService } from "@/services/jsonLdService";
 import { getAuthorAvatar } from "@/utils/author";
@@ -15,14 +16,16 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <JsonLd data={jsonLd} />
       {/* Banner Image */}
-      <div
-        className="relative w-full h-64 md:h-96 bg-gray-900"
-        style={{
-          backgroundImage: "url(/banner.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <div className="relative w-full h-64 md:h-96 bg-gray-900">
+        <Image
+          src={bannerImg}
+          alt="Sierra Mountains"
+          fill
+          className="object-cover object-center"
+          priority
+          placeholder="blur"
+          sizes="100vw"
+        />
         <div
           className="absolute inset-0 bg-black/40 flex items-center justify-center"
           aria-hidden

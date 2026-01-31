@@ -31,6 +31,15 @@ export const countries = [
   { name: "Albania", code: "AL" },
   { name: "Croatia", code: "HR" },
   { name: "Hungary", code: "HU" },
+  { name: "Canada", code: "CA" },
+  { name: "Syria", code: "SY" },
+  { name: "UK", code: "GB" },
+  { name: "Finland", code: "FI" },
+  { name: "Ukraine", code: "UA" },
+  { name: "Romania", code: "RO" },
+  { name: "Malta", code: "MT" },
+  { name: "United Arab Emirates", code: "AE" },
+  { name: "Singapore", code: "SG" },
 ] as const;
 
 /** Convert ISO 3166-1 alpha-2 code to flag emoji (e.g. "US" → 🇺🇸). */
