@@ -12,23 +12,17 @@ export interface Article {
   thumbnail?: string;
   tags?: string[];
   author?: string;
+  /** True when the source file is .mdx (use MDX renderer). */
+  isMdx?: boolean;
 }
 
 const articlesDirectory = path.join(process.cwd(), "articles");
 
 export function getAllArticles(): Article[] {
-  const fileNames = fs.readdirSync(articlesDirectory);
-  const articles = fileNames
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
-      return getArticleBySlug(slug);
-    })
-    .sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
-
-  return articles;
+  const slugs = getAllSlugs();
+  return slugs
+    .map((slug) => getArticleBySlug(slug))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 function stripFirstH1(content: string): string {
@@ -37,7 +31,10 @@ function stripFirstH1(content: string): string {
 }
 
 export function getArticleBySlug(slug: string): Article {
-  const fullPath = path.join(articlesDirectory, `${slug}.md`);
+  const mdxPath = path.join(articlesDirectory, `${slug}.mdx`);
+  const mdPath = path.join(articlesDirectory, `${slug}.md`);
+  const isMdx = fs.existsSync(mdxPath);
+  const fullPath = isMdx ? mdxPath : mdPath;
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -59,14 +56,23 @@ export function getArticleBySlug(slug: string): Article {
         : data.author?.name
           ? data.author.name
           : undefined,
+    isMdx: isMdx || undefined,
   };
 }
 
 export function getAllSlugs(): string[] {
   const fileNames = fs.readdirSync(articlesDirectory);
-  return fileNames
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => fileName.replace(/\.md$/, ""));
+  const mdSlugs = new Set(
+    fileNames
+      .filter((f) => f.endsWith(".md") && !f.endsWith(".mdx"))
+      .map((f) => f.replace(/\.md$/, ""))
+  );
+  const mdxSlugs = fileNames
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => f.replace(/\.mdx$/, ""));
+  // Prefer .mdx over .md when both exist
+  mdxSlugs.forEach((s) => mdSlugs.add(s));
+  return Array.from(mdSlugs);
 }
 
 export function getFeaturedArticles(limit: number = 6): Article[] {

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Link from "next/link";
@@ -14,6 +15,7 @@ import Breadcrumb from "@/app/components/Breadcrumb";
 import JsonLd from "@/app/components/JsonLd";
 import ShareButton from "@/app/components/ShareButton";
 import TagCloud from "@/app/components/TagCloud";
+import ArticleImage from "@/app/components/ArticleImage";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -166,12 +168,19 @@ export default async function ArticlePage({ params }: PageProps) {
                   </div>
                 )}
               <div className="prose prose-base max-w-none mt-8">
-                <ReactMarkdown
-                  rehypePlugins={[rehypeRaw]}
-                  remarkRehypeOptions={{ allowDangerousHtml: true }}
-                >
-                  {article.content}
-                </ReactMarkdown>
+                {article.isMdx ? (
+                  <MDXRemote
+                    source={article.content}
+                    components={{ ArticleImage }}
+                  />
+                ) : (
+                  <ReactMarkdown
+                    rehypePlugins={[rehypeRaw]}
+                    remarkRehypeOptions={{ allowDangerousHtml: true }}
+                  >
+                    {article.content}
+                  </ReactMarkdown>
+                )}
               </div>
             </article>
           </div>
