@@ -1,4 +1,4 @@
-const DEFAULT_BASE_URL = "https://ultralightlife.com";
+const DEFAULT_BASE_URL = "https://lindekaer.com";
 
 export const SITE_URL =
   typeof process.env.NEXT_PUBLIC_SITE_URL === "string"
