@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import GalleryWidget from "./components/GalleryWidget";
+import { seo } from "@/config/seo";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -12,8 +13,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Lindekaer",
-  description: "A blog about hiking adventures and outdoor exploration",
+  title: seo.defaultTitle,
+  description: seo.defaultDescription,
+  keywords: seo.keywords,
 };
 
 export default function RootLayout({
