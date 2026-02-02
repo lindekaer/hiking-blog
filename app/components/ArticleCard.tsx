@@ -24,7 +24,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to top, black 0%, transparent 100%)",
+                  "linear-gradient(to top, black 0%, transparent 65%)",
               }}
             />
             {/* Title and author on top of image */}
