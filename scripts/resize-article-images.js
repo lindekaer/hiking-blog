@@ -35,6 +35,11 @@ async function run() {
     const tmpPath = path.join(ARTICLE_DIR, `.tmp.${file}`);
     const ext = path.extname(file).toLowerCase();
     try {
+      const metadata = await sharp(filePath).metadata();
+      if (metadata.width != null && metadata.width <= MAX_WIDTH) {
+        console.log("  skip (already ≤" + MAX_WIDTH + "px)", file);
+        continue;
+      }
       let pipeline = sharp(filePath).resize(MAX_WIDTH, null, { withoutEnlargement: true });
 
       if (ext === ".jpg" || ext === ".jpeg") {
