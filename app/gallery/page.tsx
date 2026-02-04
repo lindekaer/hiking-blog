@@ -13,7 +13,9 @@ export default function GalleryPage() {
       <JsonLd data={jsonLd} />
       <main className="flex-1 max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         <Breadcrumb />
-        <h1 className="text-4xl font-bold mb-8 text-gray-900">Gallery</h1>
+        <h1 className="text-4xl font-bold mb-8 text-gray-900">
+          A thousand pictures say more than...
+        </h1>
 
         <GalleryGrid images={galleryImages} />
       </main>
