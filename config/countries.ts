@@ -12,6 +12,7 @@ export const countries = [
   { name: "Greece", code: "GR" },
   { name: "Poland", code: "PL" },
   { name: "Slovakia", code: "SK" },
+  { name: "Czech Republic", code: "CZ" },
   { name: "Portugal", code: "PT" },
   { name: "United States", code: "US" },
   { name: "Mexico", code: "MX" },
